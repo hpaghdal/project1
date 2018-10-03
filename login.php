@@ -1,19 +1,25 @@
 <?php
 $user_name=$_POST ['email'];//Login Page
 $password=$_POST ['password'];//Login Page
-$firstname=$_POST ['firstname'];//registration page
-$lastname=$_POST ['lastname'];//registration page
-$email=$_POST ['email'];//registration page
-$DOB=$_POST ['DOB'];//registration page
-$password=$_POST ['password'];//registration page
-$questiontitle=$_POST ['questiontitle'];//Questions page
-$skills=$_POST ['skills'];//Questions page
-$question=$_POST ['question'];//Questions page
+///$firstName=$_POST ['firstname'];//registration page
+///$lastName=$_POST ['lastname'];//registration page
+///$email=$_POST ['email'];//registration page
+///$DOB=$_POST ['DOB'];//registration page
+///$password=$_POST ['password'];//registration page
+///$questionTitle=$_POST ['questiontitle'];//Questions page
+///$skills=$_POST ['skills'];//Questions page
+///$question=$_POST ['question'];//Questions page
 
 ?>
-/**
- * Created by PhpStorm.
- * User: Hiren Paghdal
- * Date: 9/24/2018
- * Time: 2:34 PM
- */
+<!DOCTYPE HTML>
+<html>
+<head>
+<body>
+    <main>
+    UserName: <?php echo $user_name;?><br>
+   Password: <?php echo $password;?>
+    </main>
+</body>
+</html>
+</head>
+
