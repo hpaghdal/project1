@@ -16,8 +16,17 @@ $password=$_POST ['password'];//Login Page
 <head>
 <body>
     <main>
-    UserName: <?php echo $user_name;?><br>
-   Password: <?php echo $password;?>
+    Email: <?php echo $user_name;?><br>
+
+        <?php
+        if ((strlen($password)==0)) {
+            echo("no password entered");
+        } else if(strlen($password) <8) {
+            echo("password needs to be 8 characters or more");
+        } else {
+            echo($password);
+        }
+  ?>
     </main>
 </body>
 </html>
