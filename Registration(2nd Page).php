@@ -15,13 +15,56 @@ $password=$_POST ['password'];//registration page
 <head>
 <body>
 <main>
-    First Name: <?php echo $firstName;?><br>
-    Last Name: <?php echo $lastName;?><br>
-    E-mail: <?php echo $email;?><br>
-    DOB: <?php echo $DOB;?><br>
-    Password: <?php echo $password;?><br>
 
+    <!--First Name-->
+    First Name:
+    <?php
+    if ((strlen($firstName)==0)) {
+        echo("no first name entered");
+    } else {
+        echo($firstName);
+    }
+    ?><br>
+
+    <!--Last Name-->
+    last Name:
+    <?php
+    if ((strlen($lastName)==0)) {
+        echo("no last name entered");
+    } else {
+        echo($lastName);
+    }
+    ?><br>
+
+    <!--email-->
+    E-mail:
+    <?php
+    if ((strlen($email)==0)) {
+        echo("no email entered");
+    } else {
+        echo($email);
+    }
+    ?><br>
+    <!--DOB-->
+    DOB:
+    <?php
+        if ((strlen($DOB)==0)) {
+            echo("no date of birth entered");
+        } else {
+            echo($DOB);
+        }
+?><br>
+    <!--Password-->
+    Password:
+     <?php
+        if ((strlen($password)==0)) {
+            echo("no password entered");
+        } else if(strlen($password) <8) {
+            echo("password needs to be 8 characters or more");
+        } else {
+            echo($password);
+        }
+?>
 </main>
 </body>
 </html>
-</head>
