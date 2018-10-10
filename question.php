@@ -16,7 +16,7 @@ $question=$_POST ['question'];//Questions page
 <body>
     <main>
         Question title: <?php echo $questionTitle;?><br>
-        Skills: <?php echo $skills;?><br>
+        Skills: <?php echo array $skills;?><br>
        Question Body: <?php echo $question;?><br>
     </main>
 </body>
