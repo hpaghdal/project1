@@ -1,5 +1,5 @@
 <?php
-$user_name=$_POST ['email'];//Login Page
+$email=$_POST ['email'];//Login Page
 $password=$_POST ['password'];//Login Page
 ///$firstName=$_POST ['firstname'];//registration page
 ///$lastName=$_POST ['lastname'];//registration page
@@ -16,8 +16,18 @@ $password=$_POST ['password'];//Login Page
 <head>
 <body>
     <main>
-    Email: <?php echo $user_name;?><br>
+        <!--Email-->
+        E-mail:
+        <?php
+     if(strpos($email,'@')==True){
+         print("$email");
+     }
+     else
+         print("Email not valid");
 
+        ?><br>
+        <!--Password-->
+        Password:
         <?php
         if ((strlen($password)==0)) {
             echo("no password entered");
@@ -31,4 +41,3 @@ $password=$_POST ['password'];//Login Page
 </body>
 </html>
 </head>
-

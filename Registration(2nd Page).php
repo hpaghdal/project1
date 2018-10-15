@@ -36,14 +36,15 @@ $password=$_POST ['password'];//registration page
     }
     ?><br>
 
-    <!--email-->
+    <!--Email-->
     E-mail:
     <?php
-    if ((strlen($email)==0)) {
-        echo("no email entered");
-    } else {
-        echo($email);
+    if(strpos($email,'@')==True){
+        print("$email");
     }
+    else
+        print("Email not valid");
+
     ?><br>
     <!--DOB-->
     DOB:
