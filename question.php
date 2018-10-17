@@ -9,12 +9,14 @@
 $questionTitle=$_POST ['questiontitle'];//Questions page
 $skills=$_POST ['skills'];//Questions page
 $question=$_POST ['question'];//Questions page
+$skillsArray=(explode(",",$skills));
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
 <body>
     <main>
+
         <!--Question name-->
         Question Title:
         <?php
@@ -26,30 +28,32 @@ $question=$_POST ['question'];//Questions page
             echo($questionTitle);
         }
         ?><br>
-    <!--Skills-->
-        Skills:
-        <?php
-    if ((strlen($skills)==0)) {
-        echo("No skills entered");
-    } else {
-        echo($skills);
-    }
-        ?><br>
 
         <!--Question Body-->
         Question Body:
         <?php
         if ((strlen($question)==0)) {
             echo("No question entered");
-         }   else if(strlen($question) >500) {
-                echo("Question body more then 500 characters, please shorten");
-        } else {
-            echo($question);
+        }   else if(strlen($question) >500) {
+            echo("Question body more then 500 characters, please shorten");
         }
+        else {
+            print($question);
+        }
+        ?>
+        <br>
+
+        <!--Skills-->
+        Skills:
+        <?php
+        if (count($skillsArray)>=2)
+            print_r ($skillsArray);
+        else
+            echo("needs to be 2 skills or more");
+
+
+
         ?><br>
-
-
-
 
 
 
@@ -57,4 +61,4 @@ $question=$_POST ['question'];//Questions page
     </main>
 </body>
 </html>
-</head>
+
