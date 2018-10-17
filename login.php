@@ -19,11 +19,12 @@ $password=$_POST ['password'];//Login Page
         <!--Email-->
         E-mail:
         <?php
-     if(strpos($email,'@')==True){
-         print("$email");
+
+     if(strpos($email,'@')===false){
+         echo("Email not valid");
      }
      else
-         print("Email not valid");
+         echo($email);
 
         ?><br>
         <!--Password-->

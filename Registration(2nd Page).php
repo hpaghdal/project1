@@ -39,7 +39,7 @@ $password=$_POST ['password'];//registration page
     <!--Email-->
     E-mail:
     <?php
-    if(strpos($email,'@')==True){
+    if(strpos($email,"@")!==false){
         print("$email");
     }
     else
