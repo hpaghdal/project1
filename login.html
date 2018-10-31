@@ -2,20 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <title>Login</title>
 
 <body>
-<body style="background-color:#ffeed7;"></body>
-<font color="#87cefa"><center><h2>Login here:</h2> </font>
+<div class="box">
+<center><h2>Login here:</h2>
 <form action ="login.php" method="post">
+    <link rel="stylesheet" href="login.css">
+
     <table>
         <tr>
-            <td>Email Address:</td>
+            <div class="email">
+            <td>Email Address: </td>
             <td><input type="text" name="email"></td>
         </tr>
 
         <tr>
+            <div class="password">
             <td>Password:</td>
             <td>
                 <input type="password" name="password">
@@ -24,6 +30,7 @@
 
         <tr>
             <td>
+                <div class="btn">
                 <input type="Submit" name="Submit" value="Login">
             </td>
         </tr>
@@ -32,15 +39,9 @@
 </body>
 </html>
 <form>
+
+
     <input type="button" onclick="location.href='Registration.html';" value="Register" />
 </form>
 <font size="1">&copy; Hiren Paghdal 2018</font>
-
-
-
-
-
-
-
-
-
+</center>
