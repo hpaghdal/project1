@@ -1,5 +1,5 @@
 body{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Times New Roman';
     background:#3498db;
     margin: 0 auto 0 auto;
     width:100%;
@@ -8,7 +8,7 @@ body{
 }
 
 .box{
-    background: #51bdff;
+    background: #6cbbff;
     width:700px;
     border-radius:6px;
     margin: 0 auto 0 auto;

@@ -1,4 +1,5 @@
 <?php
+
 ///$user_name=$_POST ['email'];//Login Page
 ///$password=$_POST ['password'];//Login Page
 ///$firstName=$_POST ['firstname'];//registration page
@@ -14,6 +15,8 @@ $skillsArray=(explode(",",$skills));
 <!DOCTYPE HTML>
 <html>
 <head>
+    <link rel="stylesheet" href="question.css">
+    <div class="box">
 <body>
     <main>
 
