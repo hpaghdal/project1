@@ -20,10 +20,10 @@
         function eCheck($email)
         {   $valid = true;
         if (empty($email)) {
-            echo "You must enter Email Address<br>";
+            echo "You must enter a Email Address<br>";
             $valid = false;}
         elseif (strpos($email, '@') === false) {
-                echo("<br>Email not valid!! missing @ ");
+                echo("<br>Email is invalid,  missing @ symbol ");
                 $valid = false;}
         if ($valid == true){
             echo " <br>Valid email";
@@ -34,7 +34,7 @@
         function pCheck( $password){
             $valid = true;
         if ((strlen($password)==0)) {
-            echo("<br>no password entered");
+            echo("<br>please enter your password");
             $valid = false;
         } else if(strlen($password) <8) {
             echo("<br>password needs to be 8 characters or more");
@@ -62,11 +62,11 @@
 
                 header("Location: QPage.php?email=$email&fname=$fname&lname=$lname");
             }else{
-                echo "<br>User Name or Password is Wrong !!";
+                echo "<br>Username or password is wrong, please try again.";
             }
         }
         else{
-            echo" <br>Login Failed !! Try again";
+            echo" <br>Login failed please try again.";
         }
 
         ?>

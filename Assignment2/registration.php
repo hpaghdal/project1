@@ -22,7 +22,7 @@ $password=$_POST ['password'];//registration page
 function fnCheck($fname){
     $valid = true;
     if (empty($fname)){
-        echo " First Name empty<br>";
+        echo " First Name field is empty<br>";
         $valid = false;
     }
     if ($valid == true){
@@ -34,7 +34,7 @@ function fnCheck($fname){
 function lnCheck($lname){
     $valid = true;
     if (empty($lname)){
-        echo " Last Name empty<br>";
+        echo " Last Name field is empty<br>";
         $valid = false;
     }
     if ($valid == true){
@@ -46,10 +46,10 @@ function lnCheck($lname){
 function eCheck($email)
 {   $valid = true;
     if (empty($email)) {
-        echo "Email Address empty<br>";
+        echo "Email Address field is empty<br>";
         $valid = false;}
     elseif (strpos($email, '@') === false) {
-        echo("Email not valid!! missing @ <br>");
+        echo("Email is not valid, missing @ symbol. <br>");
         $valid = false;}
     if ($valid == true){
         echo " Valid email<br>";
@@ -60,7 +60,7 @@ function eCheck($email)
 function dobCheck($DOB){
     $valid = true;
     if (empty($DOB)){
-        echo " DOB empty<br>";
+        echo " Date of Birth field is empty<br>";
         $valid = false;
     }
     if ($valid == true){
@@ -71,7 +71,7 @@ function dobCheck($DOB){
 function pCheck( $password){
     $valid = true;
     if ((strlen($password)==0)) {
-        echo("<br>no password entered");
+        echo("<br>please enter your password");
         $valid = false;
     } else if(strlen($password) <8) {
         echo("password needs to be 8 characters or more<br>");
@@ -93,7 +93,7 @@ if ( fnCheck($fname) && lnCheck($lname) && eCheck($email) && dobCheck($DOB) && p
     $q->closeCursor();
 
     if(count($results) > 0) {
-        echo " Email address already registered<br>";
+        echo " this email address is already registered please use another email.<br>";
         echo "<form action =\"registrationForm.php\" method= \"post\" >
       <input type=\"submit\" value=\"Back\">
   </form>";
@@ -109,12 +109,12 @@ if ( fnCheck($fname) && lnCheck($lname) && eCheck($email) && dobCheck($DOB) && p
         $statement->bindValue(':password', $password);
         $statement->execute();
         $statement->closeCursor();
-        echo " Registration successful<br>";
+        echo " Successfully Registered<br>";
         header("Location: QPage.php?email=$email&fname=$fname&lname=$lname");
     }
 }
 else
-    echo "<br> Registration not Complete<br>";
+    echo "<br> Registration is not complete please fill out all fields.<br>";
 echo "<form action =\"registrationForm.php\" method= \"post\" >
           <input type=\"submit\" value=\"Back\">
       </form>";

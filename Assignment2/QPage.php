@@ -9,7 +9,7 @@ $email = $_GET ['email'];
 $fname = $_GET ['fname'];
 $lname = $_GET ['lname'];
 
-echo "<h2> Welcome $fname $lname </h2>";
+echo "<h2> Welcome: $fname $lname </h2>";
 //echo $email;
 
 global $conn;
@@ -23,7 +23,8 @@ $statement->closeCursor();
 
 if(count($results) < 1)
 {
-    echo "<h3> Question Not set yet !! Please Add Question</h3>";
+    echo "<h3> No questions yet click the 'Add Question' button to add your question</h3>";
+
 }
 else {
     foreach ($results as $result) {
@@ -31,9 +32,9 @@ else {
         $body = $result['body'] . '<br>';
         $skill = $result['skills'] . '<br>';
 
-        echo "<br>This is Title: $title";
-        echo "This is Question Body: $body";
-        echo "This is Skills: $skill <br>";
+        echo "<br>Title: $title";
+        echo "<br>Body: $body";
+        echo "<br>Skills: $skill <br>";
     }
 }
 
