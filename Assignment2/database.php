@@ -3,7 +3,7 @@
 <?php
 //check the connection
 $username = 'hdp36';
-$password = 'cKkTBWzVS';
+$password = 'J5qFbS1K';
 $hostname = 'sql1.njit.edu';
 $dsn = "mysql:host=$hostname;dbname=$username";
 
