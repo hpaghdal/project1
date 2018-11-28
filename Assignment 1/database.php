@@ -1,3 +1,12 @@
+///$firstName=$_POST ['firstname'];//registration page
+///$lastName=$_POST ['lastname'];//registration page
+///$email=$_POST ['email'];//registration page
+///$DOB=$_POST ['DOB'];//registration page
+///$password=$_POST ['password'];//registration page
+///$questionTitle=$_POST ['questiontitle'];//Questions page
+///$skills=$_POST ['skills'];//Questions page
+///$question=$_POST ['question'];//Questions page
+
 <?php
 //check the connection
 $username = 'hdp36';

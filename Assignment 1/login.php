@@ -1,23 +1,12 @@
 <link rel="stylesheet" href="login.css">
 <div class="box">
 <?php
-
-$username = 'hdp36';
-$password = '2uWyJ1wp';
-$hostname = 'sql1.njit.edu';
-$dsn = "mysql:host=$hostname;dbname=$username";
-
-try {
-    $conn = new PDO($dsn, $username, $password);
-    echo "Connected successfully<br>";
-} catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+include 'database.php';
 
 
 $email=$_POST ['email'];//Login Page
 $password=$_POST ['password'];//Login Page
-echo "<h1>Welcome, $email</h1>";
+echo "Welcome, $email";
 ///$firstName=$_POST ['firstname'];//registration page
 ///$lastName=$_POST ['lastname'];//registration page
 ///$email=$_POST ['email'];//registration page
@@ -55,8 +44,8 @@ echo "<h1>Welcome, $email</h1>";
             echo($password);
 
         }
-header('location: ./question.php');
-        $conn = null;
+//header('location: ./question.php');
+
   ?>
     </div>
     </main>
