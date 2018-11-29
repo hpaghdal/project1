@@ -11,7 +11,7 @@ $email = $_GET ['email'];
 <link rel="stylesheet" href="login.css">
 <div class="box">
     <font><center><h2>Ask your Questions here:</h2></font>
-    <form action ="ques.php?email=<?php echo $email ?>" method="post">
+    <form action ="../model/ques.php?email=<?php echo $email ?>" method="post">
         <table>
             <tr>
                 <!--Question Title-->

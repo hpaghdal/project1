@@ -8,7 +8,7 @@
 <body>
 <div class="box">
     <center><h2>Login here:</h2>
-        <form action ="log.php" method="post">
+        <form action ="../model/log.php" method="post">
             <link rel="stylesheet" href="login.css">
 
             <table>
@@ -42,4 +42,4 @@
 
 <br>
 
-<footer>&copy; Hiren Paghdal 2018</footer>
+

@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="login.css">
+<link rel="stylesheet" href="../view/login.css">
 <div class="box">
     <?php
-    include 'database.php';
+    include 'model/database.php';
 
 
     $email=$_POST ['email'];//Login Page

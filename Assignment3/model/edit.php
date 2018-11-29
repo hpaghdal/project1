@@ -12,9 +12,9 @@ $body = $_GET['body'];
     <title>Questions Page</title>
 </head>
 <body>
-<link rel="stylesheet" href="login.css">
+<link rel="stylesheet" href="../view/login.css">
 <div class="box">
-    <font><center><h2>Ask your Questions here:</h2></font>
+    <font><center><h2>Edit your Question here:</h2></font>
     <form action ="ques.php?email=<?php echo $email ?>" method="post">
     <input type="hidden" name="id" value="<?php echo $_GET['id']?>"><br>
 

@@ -1,6 +1,6 @@
 <footer>
     <p class="copyright">
-        &copy; <?php echo date("Y"); ?> Hiren Paghdal Blog.
+      <center> &copy; <?php echo date("Y"); ?> Hiren Paghdal Blog.</center>
     </p>
 </footer>
 </body>

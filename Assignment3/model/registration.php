@@ -2,14 +2,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../view/login.css">
 
 </head>
 <body>
 <div class="box">
 
 <?php
-require "database.php";
+include 'model/database.php';
 $fname=$_POST ['firstname'];//registration page
 $lname=$_POST ['lastname'];//registration page
 $email=$_POST ['email'];//registration page
@@ -94,9 +94,8 @@ if ( fnCheck($fname) && lnCheck($lname) && eCheck($email) && dobCheck($DOB) && p
 
     if(count($results) > 0) {
         echo " this email address is already registered please use another email.<br>";
-        echo "<form action =\"registrationForm.php\" method= \"post\" >
-      <input type=\"submit\" value=\"Back\">
-  </form>";
+        echo ">
+  </form>\"";
     }
 
     else{
@@ -115,9 +114,8 @@ if ( fnCheck($fname) && lnCheck($lname) && eCheck($email) && dobCheck($DOB) && p
 }
 else
     echo "<br> Registration is not complete please fill out all fields.<br>";
-echo "<form action =\"registrationForm.php\" method= \"post\" >
-          <input type=\"submit\" value=\"Back\">
-      </form>";
+echo ">
+      </form>\"";
 
 ?>
 

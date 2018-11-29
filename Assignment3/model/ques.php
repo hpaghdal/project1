@@ -1,8 +1,8 @@
-<link rel="stylesheet" href="question.css">
+<link rel="stylesheet" href="../view/question.css">
 <div class="box">
 <?php
 
-require "database.php";
+include 'model/database.php';
 
 $owneremail = $_GET['email'];
 $questionTitle=$_POST ['questiontitle'];//Questions page

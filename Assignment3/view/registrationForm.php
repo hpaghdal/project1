@@ -11,7 +11,7 @@
 <body>
 <div class="box">
     <center><h2>Register here:</h2></font>
-        <form action ="registration.php" method="post">
+        <form action ="../model/registration.php" method="post">
             <table>
                 <tr>
                     <!--First name-->
