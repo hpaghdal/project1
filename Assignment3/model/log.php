@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../view/login.css">
 <div class="box">
     <?php
-    include 'model/database.php';
+    //include 'model/database.php';
 
 
     $email=$_POST ['email'];//Login Page
@@ -60,7 +60,7 @@
                 $fname = $results[0]['fname'];
                 $lname = $results[0]['lname'];
 
-                header("Location: QPage.php?email=$email&fname=$fname&lname=$lname");
+                header("Location: .?email=$email");
             }else{
                 echo "<br>Username or password is wrong, please try again.";
             }

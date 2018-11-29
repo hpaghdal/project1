@@ -9,8 +9,8 @@ $email = $_GET ['email'];
 $fname = $_GET ['fname'];
 $lname = $_GET ['lname'];
 
-echo "<h2> Welcome: $fname $lname </h2>";
-//echo $email;
+echo "<h1> Welcome: $fname $lname </h1>";
+
 
 global $conn;
 $query = "SELECT * FROM questions where owneremail = '$email'";
@@ -26,6 +26,7 @@ if(count($results) < 1)
     echo "<h3> No questions yet click the 'Add Question' button to add your question</h3>";
 
 }
+
 else {
     foreach ($results as $result) {
         $title = $result['title'] . '<br>';
@@ -35,6 +36,7 @@ else {
         echo "<br>Title: $title";
         echo "<br>Body: $body";
         echo "<br>Skills: $skill <br>";
+
     }
 }
 

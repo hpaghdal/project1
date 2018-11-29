@@ -8,8 +8,11 @@
 <body>
 <div class="box">
     <center><h2>Login here:</h2>
-        <form action ="../model/log.php" method="post">
+        <form action ="." method="post">
             <link rel="stylesheet" href="login.css">
+            <input type="hidden" name="action" value="signin" size="50"></td>
+
+
 
             <table>
                 <tr>
@@ -36,7 +39,7 @@
 </html>
 <form>
 
-    <input type="button" onclick="location.href='registrationForm.php';" value="Register" />
+    <input type="button" onclick="location.href='?action=showreg';" value="Register" />
 
 </form>
 
