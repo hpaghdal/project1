@@ -1,7 +1,7 @@
 
-<?php include 'question.css"';?>
-
+<link rel="stylesheet" href="view/login.css">
 <div class="box">
+
     <center><h2>Register here:</h2></font>
         <form action ="." method="post">
             <input type="hidden" name="action" value="registration">

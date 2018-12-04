@@ -10,8 +10,6 @@
     <title>Questions Page</title>
 </head>
 <body>
-<link rel="stylesheet" href="login.css">
-<div class="box">
     <font><center><h2>Ask your Questions here:</h2></font>
     <form action ="." method="post" >
         <table>

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="login.css">
+<div class="box">
 <?php
 foreach ($getdataFromQues as $result) {
     $title = $result['title'];
@@ -12,8 +14,6 @@ foreach ($getdataFromQues as $result) {
     <title>Questions Page</title>
 </head>
 <body>
-<link rel="stylesheet" href="../view/login.css">
-<div class="box">
     <font><center><h2>Edit your Question here:</h2></font>
     <form action ="." method="post">
         <input type="hidden" name="action" value="updateQues" size="50">
