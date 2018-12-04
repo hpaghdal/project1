@@ -10,9 +10,7 @@
     <center><h2>Login here:</h2>
         <form action ="." method="post">
             <link rel="stylesheet" href="login.css">
-            <input type="hidden" name="action" value="signin" size="50"></td>
-
-
+            <input type="hidden" name="action" value="signin" size="50">
 
             <table>
                 <tr>

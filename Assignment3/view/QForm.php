@@ -1,5 +1,7 @@
+<link rel="stylesheet" href="login.css">
+<div class="box">
 <?php
-$email = $_GET ['email'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,8 +13,10 @@ $email = $_GET ['email'];
 <link rel="stylesheet" href="login.css">
 <div class="box">
     <font><center><h2>Ask your Questions here:</h2></font>
-    <form action ="../model/ques.php?email=<?php echo $email ?>" method="post">
+    <form action ="." method="post" >
         <table>
+            <input type="hidden" name="action" value="addNewQuestion" size="50">
+            <input type="hidden" name = "email" value="<?php echo $email ;?>">
             <tr>
                 <!--Question Title-->
                 <td>Question Title:</td>

@@ -9,10 +9,6 @@ function auth($email, $password){
     $q->closeCursor();
 
     if(count($results) > 0){
-//        $fname = $results[0]['fname'];
-//        $lname = $results[0]['lname'];
-//
-//        header("Location: .?email=$email");
         return true;
     }
     else{
@@ -35,7 +31,6 @@ function getUserFromAccount($email){
         return true;
     }
     else{
-       // echo "<br>Username or password is wrong, please try again.";
         return false;
     }
 
@@ -56,4 +51,31 @@ function registration($email,$fname,$lname,$DOB,$password){
     $statement->closeCursor();
     echo " Successfully Registered<br>";
 }
+
+function getNameByEmail($email){
+
+    global $conn;
+    $query = "SELECT * FROM accounts where email = '$email'";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    $results = $statement->fetchAll();
+    $statement->closeCursor();
+    return $results;
+}
+
+function getIdByEmail ($owneremail){
+
+    global $conn;
+    $q = "SELECT * FROM accounts where email = '$owneremail'";
+    $statement = $conn->prepare($q);
+    $statement->execute();
+    $results = $statement->fetchAll();
+    $statement->closeCursor();
+
+    foreach ($results as $result) {
+        $ownerid = $result['id'];
+    }
+    return $ownerid;
+}
+
 ?>

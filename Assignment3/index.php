@@ -1,7 +1,9 @@
+<?php include 'view/header.php';  ?>
 <?php
+
 require('model/database.php');
-//require('model/edit.php');
-//require('model/log.php');
+require('model/account_db.php');
+require('model/question_db.php');
 //require('model/QPage.php');
 //require('model/ques.php');
 //require('model/registration.php');
@@ -20,16 +22,16 @@ if ( $action == 'loginForm'){
 }
 //LOGIN ACTION
 else if ($action == 'signin') {
-    $email=$_POST ['email'];//Login Page
+    $email= $_POST ['email'];//Login Page
     $password=$_POST ['password'];//Login Page
-    include('model/log.php');
+    include('log.php');
     $results = auth ($email, $password);
     if ($valid && $results ){
-        header("Location:?action=QPage&&email=$email");
+        header("Location:.?action=QPage&&email=$email");
     }
     else
         $error= "<br>Wrong username or password, please try again";
-    include("error.php");
+    //include("error.php");
 }
 else if ( $action == 'showreg'){
     include('view/registrationForm.php');
@@ -40,7 +42,7 @@ else if ($action == 'registration') {
     $email=$_POST ['email'];//registration page
     $DOB=$_POST ['DOB'];//registration page
     $password=$_POST ['password'];//registration page
-    include('model/registration.php');
+    include('registration.php');
     $results = getUserFromAccount($email);
     if ($valid) {
         if ($results) {
@@ -58,28 +60,27 @@ else if ($action == 'registration') {
 }
 //SHOW ADD QUESTION FORM
 else if ( $action == 'showNewQuestion'){
-    $email = filter_input( INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    include('model/QPage.php');
+    $email= $_POST ['email'];//Login Page
+    include('view/QForm.php');
 }
-else if ($action == 'addQuestion') {
-    $questionTitle = filter_input(INPUT_POST, 'questiontitle', FILTER_SANITIZE_STRING);
-    $skills = filter_input(INPUT_POST, 'skills', FILTER_SANITIZE_STRING);
-    $questionbody = filter_input(INPUT_POST, 'questionbody', FILTER_SANITIZE_STRING);
-    $email = filter_input( INPUT_POST, 'email');
+else if ($action == 'addNewQuestion') {
+    $owneremail = $_POST['email'];
+    $questionTitle= $_POST ['questiontitle'];//Questions page
+    $skills=$_POST ['skills'];//Questions page
+    $questionbody=$_POST ['questionbody'];//Questions page
+    $skillsArray=(explode(",",$skills));
     $datetime =  date('Y-m-d H:i:s');
-    $data = str_replace(' ', '', $skills);
-    $skill_array = explode(",", $data);
-    $skills = implode(",", $skill_array);
+
+//    $data = str_replace(' ', '', $skills);
+//    $skill_array = explode(",", $data);
+//    $skills = implode(",", $skill_array);
 //Array Count
-    $array_count = count($skill_array);
-    include('questionValidationCheck.php');
-    if ($valid == true){
-        $results = userFromAccounts ($email);
-        foreach ($results as $result) {
-            $ownerid = $result['id'];
-        }
-        addQuestion($email, $ownerid, $datetime, $questionTitle, $questionbody, $skills);
-        header("Location: ?action=model/QPage&&email=$email");
+//    $array_count = count($skill_array);
+    include('ques.php');
+    if ($valid){
+        $ownerid = getIdByEmail ($owneremail);
+        addNewQuestion($owneremail,$ownerid,$datetime,$questionTitle,$questionbody,$skills);
+        header("Location:?action=QPage&&email=$owneremail");
 
     }
     else{
@@ -88,32 +89,37 @@ else if ($action == 'addQuestion') {
 }
 // EDIT
 else if ($action == 'editQues') {
-    $id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
-    $dataFromQuestions = dataFromQuestionsById ($id);
-    if ($id == NULL || $id == FALSE ) {
-        $error = "Missing fields.";
-        include('error.php');
-    } else {
-        include('editQuestion.php');
-    }
+    $id = $_GET['id'];
+    $email = $_GET['email'];
+    $getdataFromQues = getdataFromQuesById ($id);
+    include('edit.php');
 }
 //UPDATE
 else if ($action == 'updateQues') {
-    $id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
-    $qname = filter_input(INPUT_POST, 'questiontitle', FILTER_SANITIZE_STRING);
-    $qskill = filter_input(INPUT_POST, 'skills', FILTER_SANITIZE_STRING);
-    $qbody = filter_input(INPUT_POST, 'questionbody', FILTER_SANITIZE_STRING);
-    $email = filter_input( INPUT_POST, 'email');
+    $owneremail = $_POST['email'];
+    $id = $_POST['id'];
+    $questionTitle= $_POST ['questiontitle'];//Questions page
+    $skills=$_POST ['skills'];//Questions page
+    $questionbody=$_POST ['questionbody'];//Questions page
+    $skillsArray=(explode(",",$skills));
     $datetime =  date('Y-m-d H:i:s');
-    $data = str_replace(' ', '', $qskill);
-    $skill_array = explode(",", $data);
-    $skills = implode(",", $skill_array);
-    //Array Count
-    $array_count = count($skill_array);
-    include('model/ques.php');
-    if ($valid == true){
-        updateQuestion($id, $qname, $qbody, $skills);
-        header("Location:?action=model/Qpage&&email=$email");
+
+
+//    $id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
+//    $qname = filter_input(INPUT_POST, 'questiontitle', FILTER_SANITIZE_STRING);
+//    $qskill = filter_input(INPUT_POST, 'skills', FILTER_SANITIZE_STRING);
+//    $qbody = filter_input(INPUT_POST, 'questionbody', FILTER_SANITIZE_STRING);
+//    $email = filter_input( INPUT_POST, 'email');
+//    $datetime =  date('Y-m-d H:i:s');
+//    $data = str_replace(' ', '', $qskill);
+//    $skill_array = explode(",", $data);
+//    $skills = implode(",", $skill_array);
+//    //Array Count
+//    $array_count = count($skill_array);
+    include('ques.php');
+    if ($valid){
+        updateQue($id, $questionTitle, $questionbody, $skills);
+        header("Location:?action=QPage&&email=$owneremail");
     }
     else{
         echo ' Try again';
@@ -121,23 +127,20 @@ else if ($action == 'updateQues') {
 }
 //DELETE
 else if ($action == 'deleteQues') {
-    $id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
-    $email = filter_input( INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    if ($id == NULL || $id == FALSE || $email == NULL || $email == FALSE ) {
-        $error = "Missing fields";
-        include('error.php');
-    } else {
-        deleteQuestion($id);
-        header("Location: .?action=model/Qpage&&email=$email");
-    }
+    $id = $_GET['id'];
+    $email = $_GET['email'];
+    deleteQues($id);
+    header("Location:.?action=QPage&&email=$email");
+
 }
 //QUESTION DISPLAY PAGE
 else if ($action =='QPage'){
+
     //$greetings = greetings();
     $email = $_GET['email'];
     $results = questionDataByEmail($email);
-//    $dataFromQuestions = dataFromQuestions ($email);
-    include('model/Qpage.php');
+    $getNames = getNameByEmail($email);
+    include('QPage.php');
 }
 
 ?>

@@ -1,17 +1,10 @@
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-    <link rel="stylesheet" href="login.css">
+<?php include 'question.css"';?>
 
-</head>
-
-
-<body>
 <div class="box">
     <center><h2>Register here:</h2></font>
-        <form action ="../model/registration.php" method="post">
+        <form action ="." method="post">
+            <input type="hidden" name="action" value="registration">
             <table>
                 <tr>
                     <!--First name-->
@@ -36,7 +29,7 @@
                         <input type="text" name="email"size="40">
                     </td>
                 </tr>
-                <tr>
+
                 <tr>
                     <!--DOB-->
                     <td>Date of Birth:</td>
@@ -62,12 +55,7 @@
     </center>
 
 <form>
-    <input type="button" onclick="location.href='logForm.php';" value="Login" />
+    <input type="button" onclick="location.href='.?action=loginForm';" value="Login" />
 </form>
 
-
-<font size="1">&copy; Hiren Paghdal 2018</font>
-    </center>
-</div>
-</body>
-</html>
+<?php include '../view/footer.php';?>
