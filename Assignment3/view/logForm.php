@@ -1,4 +1,5 @@
-
+<link rel="stylesheet" href="view/login.css">
+<div class="box">
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,10 +7,10 @@
     <title>Login</title>
 
 <body>
-<div class="box">
     <center><h2>Login here:</h2>
         <form action ="." method="post">
-            <link rel="stylesheet" href="login.css">
+
+
             <input type="hidden" name="action" value="signin" size="50">
 
             <table>
@@ -42,5 +43,5 @@
 </form>
 
 <br>
-
+<?php include ('footer.php');?>
 
