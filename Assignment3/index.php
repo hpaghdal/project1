@@ -16,7 +16,7 @@ if ($action == NULL) {
         $action = 'loginForm';
     }
 }
-//SHOW LOGIN FORM
+
 if ( $action == 'loginForm'){
     include('view/logForm.php');
 }
@@ -31,7 +31,6 @@ else if ($action == 'signin') {
     }
     else
         $error= "<br>Wrong username or password, please try again";
-    //include("error.php");
 }
 else if ( $action == 'showreg'){
     include('view/registrationForm.php');
@@ -58,7 +57,7 @@ else if ($action == 'registration') {
 //        redirect(" <h2><b style=\"color: red; text-align: center \"> Registration not Complete </b> <h2>", "?action=finalPage'");
     }
 }
-//SHOW ADD QUESTION FORM
+
 else if ( $action == 'showNewQuestion'){
     $email= $_POST ['email'];//Login Page
     include('view/QForm.php');
@@ -71,11 +70,7 @@ else if ($action == 'addNewQuestion') {
     $skillsArray=(explode(",",$skills));
     $datetime =  date('Y-m-d H:i:s');
 
-//    $data = str_replace(' ', '', $skills);
-//    $skill_array = explode(",", $data);
-//    $skills = implode(",", $skill_array);
-//Array Count
-//    $array_count = count($skill_array);
+
     include('ques.php');
     if ($valid){
         $ownerid = getIdByEmail ($owneremail);
@@ -87,14 +82,14 @@ else if ($action == 'addNewQuestion') {
         echo ' Try again';
     }
 }
-// EDIT
+
 else if ($action == 'editQues') {
     $id = $_GET['id'];
     $email = $_GET['email'];
     $getdataFromQues = getdataFromQuesById ($id);
     include('edit.php');
 }
-//UPDATE
+
 else if ($action == 'updateQues') {
     $owneremail = $_POST['email'];
     $id = $_POST['id'];
@@ -105,17 +100,7 @@ else if ($action == 'updateQues') {
     $datetime =  date('Y-m-d H:i:s');
 
 
-//    $id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
-//    $qname = filter_input(INPUT_POST, 'questiontitle', FILTER_SANITIZE_STRING);
-//    $qskill = filter_input(INPUT_POST, 'skills', FILTER_SANITIZE_STRING);
-//    $qbody = filter_input(INPUT_POST, 'questionbody', FILTER_SANITIZE_STRING);
-//    $email = filter_input( INPUT_POST, 'email');
-//    $datetime =  date('Y-m-d H:i:s');
-//    $data = str_replace(' ', '', $qskill);
-//    $skill_array = explode(",", $data);
-//    $skills = implode(",", $skill_array);
-//    //Array Count
-//    $array_count = count($skill_array);
+
     include('ques.php');
     if ($valid){
         updateQue($id, $questionTitle, $questionbody, $skills);
@@ -125,7 +110,7 @@ else if ($action == 'updateQues') {
         echo ' Try again';
     }
 }
-//DELETE
+
 else if ($action == 'deleteQues') {
     $id = $_GET['id'];
     $email = $_GET['email'];
@@ -133,7 +118,7 @@ else if ($action == 'deleteQues') {
     header("Location:.?action=QPage&&email=$email");
 
 }
-//QUESTION DISPLAY PAGE
+
 else if ($action =='QPage'){
 
     //$greetings = greetings();
