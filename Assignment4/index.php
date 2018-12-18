@@ -4,6 +4,7 @@
 require('model/database.php');
 require('model/account_db.php');
 require('model/question_db.php');
+require ('model/Account.php');
 //require('model/QPage.php');
 //require('model/ques.php');
 //require('model/registration.php');
@@ -25,7 +26,7 @@ else if ($action == 'signin') {
     $email= $_POST ['email'];//Login Page
     $password=$_POST ['password'];//Login Page
     include('log.php');
-    $results = auth ($email, $password);
+    $results = Account::auth ($email, $password);
     if ($valid && $results ){
         header("Location:.?action=QPage&&email=$email");
     }
@@ -123,7 +124,7 @@ else if ($action =='QPage'){
 
     $email = $_GET['email'];
     $results = questionDataByEmail($email);
-    $getNames = getNameByEmail($email);
+    $getNames = Account::getNameByEmail($email);
     include('QPage.php');
 }
 
