@@ -1,61 +1,69 @@
 <?php
 class Question{
 
-    private $email, $pass, $fname, $lname, $birth, $id;
+    private $owneremail,$ownerid, $questionTitle,$questionbody,$skills ,$datetime, $id;
 
-    public function __construct( $email, $pass, $fname, $lname, $birth)
+    public function __construct( $owneremail,$ownerid,$datetime, $questionTitle,$questionbody,$skills)
     {
-        $this ->email=$email;
-        $this ->pass=$pass;
-        $this ->fname=$fname;
-        $this ->lname=$lname;
-        $this ->birth=$birth;
+        $this ->owneremail=$owneremail;
+        $this ->ownerid=$ownerid;
+        $this ->datetime=$datetime;
+        $this ->questionTitle=$questionTitle;
+        $this ->questionbody=$questionbody;
+        $this ->skills=$skills;
     }
 
-    public function getEmail(){
-        return $this ->email;
+    public function getOwneremail(){
+        return $this ->owneremail;
     }
 
-    public function setEmail($value) {
-        $this->email = $value;
-    }
-
-
-    public function getPass(){
-        return $this ->pass;
-    }
-
-    public function setPass($value) {
-        $this->pass = $value;
+    public function setOwneremail($value) {
+        $this->owneremail = $value;
     }
 
 
-    public function getFname(){
-        return $this ->fname;
+    public function getOwnerid(){
+        return $this ->ownerid;
     }
 
-    public function setFname($value) {
-        $this->fname = $value;
-    }
-
-
-    public function getLname(){
-        return $this ->lname;
-    }
-
-    public function setLname($value) {
-        $this->lname = $value;
+    public function setOwnerid($value) {
+        $this->ownerid = $value;
     }
 
 
-    public function getBirth(){
-        return $this ->birth;
+    public function getQuestionTitle(){
+        return $this ->questionTitle;
     }
 
-    public function setBirth($value) {
-        $this->birth = $value;
+    public function setQuestionTitle($value) {
+        $this->questionTitle = $value;
     }
 
+
+    public function getQuestionbody(){
+        return $this ->questionbody;
+    }
+
+    public function setQuestionbody($value) {
+        $this->questionbody = $value;
+    }
+
+
+    public function getSkills(){
+        return $this ->skills;
+    }
+
+    public function setSkills($value) {
+        $this->skills = $value;
+    }
+
+    public function getDateTime(){
+        return $this ->datetime;
+    }
+
+    public function setDateTime($value) {
+        $this->datetime = $value;
+    }
 
     public function getId(){
         return $this ->id;

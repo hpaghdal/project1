@@ -34,15 +34,15 @@ if ($valid){
         echo("Email is not valid, missing @ symbol. <br>");
         $valid = false;}
 
-    if (empty($DOB)){
+    if (empty($birth)){
         echo " Date of Birth field is empty<br>";
         $valid = false;
     }
 
-    if ((strlen($password)==0)) {
+    if ((strlen($pass)==0)) {
         echo("Password field is empty<br>");
         $valid = false;
-    } else if(strlen($password) <8) {
+    } else if(strlen($pass) <8) {
         echo("password needs to be 8 characters or more<br>");
         $valid = false;
     }

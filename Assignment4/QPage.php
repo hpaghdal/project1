@@ -4,12 +4,11 @@
     <title>Your Questions Page</title>
 
 <?php
-
-echo "Today is " .date("l, F, d Y ");
-foreach ($getNames as $result) {
-    $fname = $result['fname'];
-    $lname = $result['lname'];
-}
+echo "Today is " .date("l, F  d, Y ");
+//foreach ($getNames as $result) {
+//    $fname = $result['fname'];
+//    $lname = $result['lname'];
+//}
 
 echo "<h1> Welcome: $fname $lname </h1>";
 
@@ -45,7 +44,7 @@ else {
     </form>
 
     <form action ="." method= "post" >
-        <input type="hidden" name = "action" value="loginForm">
+        <input type="hidden" name = "action" value="logout">
         <input type="submit" value="Logout">
     </form>
 

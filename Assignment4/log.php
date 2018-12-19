@@ -33,17 +33,10 @@
             $valid = false;
         }
 
-//        if ($valid == true){
-//            echo " <br>password is valid";
-//            }
-//            return $valid;
-//        }
         return $valid;
-        }
+    }
 
-
-
-        ?>
+    ?>
 </div>
 </main>
 </body>

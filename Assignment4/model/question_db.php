@@ -47,6 +47,7 @@ class Question_db
         $statement->bindValue(':skills', $skills);
         $statement->execute();
         $statement->closeCursor();
+        return $statement;
         echo " Insert successful";
     }
 

@@ -1,5 +1,6 @@
 <?php
-class account_db{
+class Account{
+
     private $email, $pass, $fname, $lname, $birth, $id;
 
     public function __construct( $email, $pass, $fname, $lname, $birth)

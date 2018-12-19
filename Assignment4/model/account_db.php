@@ -1,11 +1,12 @@
 <?php
-class Account
+class Account_db
 {
 
     public static function auth($email, $password)
     {
 
-        global $conn;
+        $conn = Database::getDB();
+
         $q = "select * from accounts where email='$email' and password='$password'";
         $q = $conn->prepare($q);
         $q->execute();
@@ -22,9 +23,72 @@ class Account
     }
 
 
+    public static function getNameByEmail($email)
+    {
+
+        $conn = Database::getDB();
+
+        $query = "SELECT * FROM accounts where email = '$email'";
+        $statement = $conn->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll();
+        $statement->closeCursor();
+        $account = new Account(
+            $results['email'],
+            $results['password'],
+            $results['fname'],
+            $results['lname'],
+            $results['birthday']
+        );
+        $account->setId($results['id']);
+
+        return $account;
+    }
+
+
+    public static function registration($registration)
+    {
+        $conn = Database::getDB();
+
+        $email = $registration -> getEmail();
+        $fname = $registration -> getFname();
+        $lname = $registration -> getLname();
+        $birth = $registration -> getBirth();
+        $pass = $registration -> getPass();
+
+        $q = "insert into accounts (email, fname, lname, birthday, password) values (:email, :fname,:lname,:DOB,:password)";
+
+        $statement = $conn->prepare($q);
+        $statement->bindValue(':email', $email);
+        $statement->bindValue(':fname', $fname);
+        $statement->bindValue(':lname', $lname);
+        $statement->bindValue(':DOB', $birth);
+        $statement->bindValue(':password', $pass);
+        $statement->execute();
+        $statement->closeCursor();
+        return $statement;
+        echo " Successfully Registered<br>";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static function getUserFromAccount($email)
     {
-        global $conn;
+        $conn = Database::getDB();
+
         $q = "select * from accounts where email='$email'";
         $q = $conn->prepare($q);
         $q->execute();
@@ -40,46 +104,11 @@ class Account
     }
 
 
-    public static function registration($email, $fname, $lname, $DOB, $password)
-    {
-        global $conn;
-        $q = "insert into accounts (email, fname, lname, birthday, password) values (:email, :fname,:lname,:DOB,:password)";
-        $statement = $conn->prepare($q);
-        $statement->bindValue(':email', $email);
-        $statement->bindValue(':fname', $fname);
-        $statement->bindValue(':lname', $lname);
-        $statement->bindValue(':DOB', $DOB);
-        $statement->bindValue(':password', $password);
-        $statement->execute();
-        $statement->closeCursor();
-        echo " Successfully Registered<br>";
-    }
-
-    public static function getNameByEmail($email)
-    {
-
-        global $conn;
-        $query = "SELECT * FROM accounts where email = '$email'";
-        $statement = $conn->prepare($query);
-        $statement->execute();
-        $results = $statement->fetchAll();
-        $statement->closeCursor();
-            $account = new Account(
-                $results['email'],
-                $results['password'],
-                $results['fname'],
-                $results['lname'],
-                $results['birth']
-            );
-        $account->setId($results['id']);
-
-        return $account;
-    }
-
     public static function getIdByEmail($owneremail)
     {
 
-        global $conn;
+        $conn = Database::getDB();
+
         $q = "SELECT * FROM accounts where email = '$owneremail'";
         $statement = $conn->prepare($q);
         $statement->execute();

@@ -2,8 +2,6 @@
 <div class="box">
 <?php
 
-include 'model/database.php';
-
 $valid = true;
 
     if ($valid) {
