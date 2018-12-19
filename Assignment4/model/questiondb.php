@@ -1,96 +1,61 @@
 <?php
-class questiondb
-{
+function questionDataByEmail($email){
 
-    public static function auth($email, $password)
-    {
-
-        global $conn;
-        $q = "select * from accounts where email='$email' and password='$password'";
-        $q = $conn->prepare($q);
-        $q->execute();
-        $results = $q->fetchAll();
-        $q->closeCursor();
-
-        if (count($results) > 0) {
-            return true;
-        } else {
-            echo "<br>Username or password is wrong, please try again.";
-            return false;
-        }
-
-    }
-
-
-    public static function getUserFromAccount($email)
-    {
-        global $conn;
-        $q = "select * from accounts where email='$email'";
-        $q = $conn->prepare($q);
-        $q->execute();
-        $results = $q->fetchAll();
-        $q->closeCursor();
-
-        if (count($results) > 0) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-
-    public static function registration($email, $fname, $lname, $DOB, $password)
-    {
-        global $conn;
-        $q = "insert into accounts (email, fname, lname, birthday, password) values (:email, :fname,:lname,:DOB,:password)";
-        $statement = $conn->prepare($q);
-        $statement->bindValue(':email', $email);
-        $statement->bindValue(':fname', $fname);
-        $statement->bindValue(':lname', $lname);
-        $statement->bindValue(':DOB', $DOB);
-        $statement->bindValue(':password', $password);
-        $statement->execute();
-        $statement->closeCursor();
-        echo " Successfully Registered<br>";
-    }
-
-    public static function getNameByEmail($email)
-    {
-
-        global $conn;
-        $query = "SELECT * FROM accounts where email = '$email'";
-        $statement = $conn->prepare($query);
-        $statement->execute();
-        $results = $statement->fetchAll();
-        $statement->closeCursor();
-        $account = new Account(
-            $results['email'],
-            $results['password'],
-            $results['fname'],
-            $results['lname'],
-            $results['birthday']
-        );
-        $account->setId($results['id']);
-
-        return $account;
-    }
-
-    public static function getIdByEmail($owneremail)
-    {
-
-        global $conn;
-        $q = "SELECT * FROM accounts where email = '$owneremail'";
-        $statement = $conn->prepare($q);
-        $statement->execute();
-        $results = $statement->fetchAll();
-        $statement->closeCursor();
-
-        foreach ($results as $result) {
-            $ownerid = $result['id'];
-        }
-        return $ownerid;
-    }
+    $conn = Database::getDB();
+    $query = "SELECT * FROM questions where owneremail = '$email'";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    $results = $statement->fetchAll();
+    $statement->closeCursor();
+    return $results;
 }
 
+
+function addNewQuestion($owneremail,$ownerid,$datetime,$questionTitle,$questionbody,$skills){
+    $conn = Database::getDB();
+    $query = "insert into questions (owneremail, ownerid, createddate, title, body, skills) values ( :owneremail, :ownerid, :datetime, :questionTitle, :questionbody,:skills)";
+    $statement = $conn->prepare($query);
+    $statement->bindValue(':owneremail', $owneremail);
+    $statement->bindValue(':ownerid', $ownerid);
+    $statement->bindValue(':datetime', $datetime);
+    $statement->bindValue(':questionTitle', $questionTitle);
+    $statement->bindValue(':questionbody', $questionbody);
+    $statement->bindValue(':skills', $skills);
+    $statement->execute();
+    $statement->closeCursor();
+    echo " Insert successful";
+}
+
+function getdataFromQuesById ($id){
+    $conn = Database::getDB();
+
+        $query = "SELECT * FROM questions where id = '$id'";
+        $q = $conn->prepare($query);
+        $q->execute();
+        $results = $q->fetchAll();
+        $q->closeCursor();
+        return $results;
+}
+
+function updateQue($id, $questionTitle, $questionbody, $skills){
+
+    $conn = Database::getDB();
+
+    $query = "update questions set title = :questionTitle, body= :questionbody, skills = :skills where id = '$id'";
+    $statement = $conn->prepare($query);
+    $statement->bindValue(':questionTitle', $questionTitle);
+    $statement->bindValue(':questionbody', $questionbody);
+    $statement->bindValue(':skills', $skills);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+
+function deleteQues($id) {
+    $conn = Database::getDB();
+    $query = "DELETE FROM questions WHERE id = '$id'";
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    $statement->closeCursor();
+}
 ?>
