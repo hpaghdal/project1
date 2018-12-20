@@ -26,9 +26,7 @@ foreach ($getdataFromQues as $result) {
                 <td>Question Title:</td>
                 <td>
                     <input type="text" name="questiontitle" value="<?php echo $title;?>" > <br>
-<!--                    <input type="text" name="questiontitle" id="skills" value="--><?php //echo $_POST["skills"];?><!--"<br>-->
-<!--                    <input type="text" name="questiontitle" id="skills" value="--><?php //echo $_POST["skills"];?><!--"<br>-->
-<!--                    <input type="text" name="questiontitle" id="skills" value="--><?php //echo $_POST["skills"];?><!--"<br>-->
+
 
 
                 </td>

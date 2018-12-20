@@ -9,9 +9,7 @@
 
     $allQuestions=getAllQuestions();
 echo "Today is " .date("l, F  d, Y ");
-//foreach ($getNames as $result) {
     $fname = $getNames->getFname();
-    //$lname = $result['lname'];
 //}
 
 echo "<h1> Welcome: $fname $lname </h1>";
