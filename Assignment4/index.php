@@ -80,7 +80,6 @@ else if ($action == 'registration') {
     }
     else {
 
-//        redirect(" <h2><b style=\"color: red; text-align: center \"> Registration not Complete </b> <h2>", "?action=finalPage'");
     }
 }
 
@@ -107,7 +106,6 @@ else if ($action == 'addNewQuestion') {
         echo 'test';
         Question_db::question($question);
 
-        //addNewQuestion($owneremail,$ownerid,$datetime,$questionTitle,$questionbody,$skills);
         header("Location:?action=QPage");
 
     }
@@ -175,8 +173,7 @@ else if ($action == 'fullview') {
     //$email = $_GET['email'];
     $results = getdataFromQuesById ($id);
     include('test2.php');
-    //header("Location:.?action=QPage");
-    //header("Location:.?action=QPage&&email=$email");
+
 
 }
 
@@ -184,15 +181,11 @@ else if ($action == 'fullview') {
 else if ($action =='QPage'){
     session_start();
 //    if ($_SESSION["logged"] === true){
-//        echo 'ghghgfhgf';
 //        //header("Location:logout.php");
 //    }
 
 
 //
-//    if (!(isset($_SESSION['login']) && !$_SESSION['login'] )) {
-//    echo 'gfhgfhgfhgfh';
-//        //header ("Location: login.php");
 //
 //    }
 

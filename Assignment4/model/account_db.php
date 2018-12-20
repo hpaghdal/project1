@@ -72,19 +72,6 @@ class Account_db
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     public static function getUserFromAccount($email)
     {
         $conn = Database::getDB();

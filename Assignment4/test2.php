@@ -20,7 +20,7 @@ else {
         echo "<br>Body: $body";
         echo "<br>Skills: $skill <br>";
 
-        echo "<button><a href = '.?action=QPage'>Back to Display<a></td></button><br>";
+        echo "<button><a href = '.?action=QPage'>Back to Questions<a></td></button><br>";
         echo "<br><br>";
     }
 }
