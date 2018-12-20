@@ -31,7 +31,7 @@ class Account_db
         $query = "SELECT * FROM accounts where email = '$email'";
         $statement = $conn->prepare($query);
         $statement->execute();
-        $results = $statement->fetchAll();
+        $results = $statement->fetch();
         $statement->closeCursor();
         $account = new Account(
             $results['email'],
