@@ -32,7 +32,7 @@ else {
         echo "<br>Body: $body";
         echo "<br>Skills: $skill <br>";
 
-        echo "<button><a href = '.?action=editQues&&email=$email&&id=$id'>edit<a></td></button><br>";
+        echo "<button><a href = '.?action=editQues&&id=$id'>edit<a></td></button><br>";
         echo "<button><a href = '.?action=deleteQues&&email=$email&&id=$id'>delete<a></td><br><br></button>";
     }
 }

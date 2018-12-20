@@ -86,5 +86,20 @@ class Question_db
         $statement->execute();
         $statement->closeCursor();
     }
+
+
+
+public static function getAllQuestions()
+{
+    $conn = Database::getDB();
+
+    $query = "SELECT * FROM questions ";
+    $q = $conn->prepare($query);
+    $q->execute();
+    $results = $q->fetchAll();
+    $q->closeCursor();
+    return $results;
+}
+
 }
 ?>

@@ -51,14 +51,19 @@ else if ($action == 'signin') {
         $error= "<br>Wrong username or password, please try again";
 }
 else if ( $action == 'showreg'){
+    session_start();
+
     include('view/registrationForm.php');
 }
 else if ($action == 'registration') {
+    session_start();
+
     $fname=$_POST ['firstname'];//registration page
     $lname=$_POST ['lastname'];//registration page
     $email=$_POST ['email'];//registration page
     $birth=$_POST ['DOB'];//registration page
     $pass=$_POST ['password'];//registration page
+    $_SESSION["email"] = $email;
     include('registration.php');
     $results = Account_db::getUserFromAccount($email);
     if ($valid) {
@@ -68,7 +73,7 @@ else if ($action == 'registration') {
         else {
             $registration= new Account($email,$pass,$fname,$lname,$birth);
             Account_db::registration($registration);
-            header("Location:?action=QPage&&email=$email");
+            header("Location:?action=QPage");
         }
     }
     else {
@@ -78,10 +83,13 @@ else if ($action == 'registration') {
 }
 
 else if ( $action == 'showNewQuestion'){
+    session_start();
+
     $email= $_POST ['email'];//Login Page
     include('view/QForm.php');
 }
 else if ($action == 'addNewQuestion') {
+
     $owneremail = $_POST['email'];
     $questionTitle= $_POST ['questiontitle'];//Questions page
     $skills=$_POST ['skills'];//Questions page
@@ -89,16 +97,16 @@ else if ($action == 'addNewQuestion') {
     $skillsArray=(explode(",",$skills));
     $datetime =  date('Y-m-d H:i:s');
     $ownerid = Account_db::getIdByEmail($owneremail);
+    $_SESSION["email"] = $owneremail;
     include('ques.php');
     if ($valid){
 
         $question= new Question($owneremail,$ownerid,$datetime,$questionTitle,$questionbody,$skills);
-        echo 'pagal';
+        echo 'test';
         Question_db::question($question);
 
-        echo 'pagafdasfasl';
         //addNewQuestion($owneremail,$ownerid,$datetime,$questionTitle,$questionbody,$skills);
-       // header("Location:?action=QPage&&email=$owneremail");
+       // header("Location:?action=QPage");
 
     }
     else{
@@ -107,13 +115,19 @@ else if ($action == 'addNewQuestion') {
 }
 
 else if ($action == 'editQues') {
+    session_start();
+
     $id = $_GET['id'];
-    $email = $_GET['email'];
+    //$email = $_GET['email'];
+    $email=$_SESSION["email"] ;
     $getdataFromQues = getdataFromQuesById ($id);
     include('edit.php');
 }
 
 else if ($action == 'updateQues') {
+    session_start();
+
+
     $owneremail = $_POST['email'];
     $id = $_POST['id'];
     $questionTitle= $_POST ['questiontitle'];//Questions page
@@ -122,12 +136,13 @@ else if ($action == 'updateQues') {
     $skillsArray=(explode(",",$skills));
     $datetime =  date('Y-m-d H:i:s');
 
+    $_SESSION["email"] = $owneremail;
 
 
     include('ques.php');
     if ($valid){
         updateQue($id, $questionTitle, $questionbody, $skills);
-        header("Location:?action=QPage&&email=$owneremail");
+        header("Location:?action=QPage");
     }
     else{
         echo ' Try again';
@@ -135,15 +150,34 @@ else if ($action == 'updateQues') {
 }
 
 else if ($action == 'deleteQues') {
-    if ($_SESSION["logged"] = False){
-        header("Location:logout.php");
-    }
+    session_start();
+//    if ($_SESSION["logged"] = False){
+//        header("Location:logout.php");
+//    }
     $id = $_GET['id'];
-    $email = $_GET['email'];
+    $email=$_SESSION["email"] ;
+    //$email = $_GET['email'];
     deleteQues($id);
-    header("Location:.?action=QPage&&email=$email");
+    header("Location:.?action=QPage");
+    //header("Location:.?action=QPage&&email=$email");
 
 }
+
+else if ($action == 'fullview') {
+    session_start();
+//    if ($_SESSION["logged"] = False){
+//        header("Location:logout.php");
+//    }
+    $id = $_GET['id'];
+    $email=$_SESSION["email"] ;
+    //$email = $_GET['email'];
+    $results = getdataFromQuesById ($id);
+    include('test2.php');
+    //header("Location:.?action=QPage");
+    //header("Location:.?action=QPage&&email=$email");
+
+}
+
 
 else if ($action =='QPage'){
     session_start();
@@ -165,7 +199,7 @@ else if ($action =='QPage'){
     echo $email;
     $results = questionDataByEmail($email);
     $getNames = Account_db::getNameByEmail($email);
-    include('QPage.php');
+    include('test.php');
 }
 else if ($action =='logout'){
     include ('logout.php');
