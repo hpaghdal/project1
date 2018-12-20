@@ -4,6 +4,8 @@
 require('model/database.php');
 require('model/account_db.php');
 require('model/questiondb.php');
+require ('model/question_db.php');
+require ('model/Question.php');
 require ('model/Account.php');
 //require('model/QPage.php');
 //require('model/ques.php');
@@ -199,8 +201,10 @@ else if ($action =='QPage'){
    // echo $email;
     $results = questionDataByEmail($email);
     $getNames = Account_db::getNameByEmail($email);
-    echo $getNames->getFname();
-    //include('test.php');
+
+    #I added this but no name appears:
+    $fname = $getNames->getFname();
+    include('test.php');
 }
 else if ($action =='logout'){
     include ('logout.php');
