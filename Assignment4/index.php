@@ -14,11 +14,17 @@ $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
     if ($action == NULL) {
-        $action = 'addNewQuestion';
+        $action = 'loginForm';
     }
 }
 
 if ( $action == 'loginForm'){
+
+    session_start();
+    $_SESSION["logged"] === True;
+//
+//    isset($_SESSION['login']) == true;
+//    isset($_SESSION['login']) == true;
     include('view/logForm.php');
 }
 //LOGIN ACTION
@@ -28,9 +34,10 @@ else if ($action == 'signin') {
     $email= $_POST ['email'];//Login Page
 
 
-    // Set session variable
-//    $_SESSION["email"] = $email;
-//    $_SESSION["logged"] = True;
+//     Set session variable
+    $_SESSION["email"] = $email;
+    //$_SESSION["logged"] === True;
+    //$_SESSION["logged"] === True;
 
 
     $password=$_POST ['password'];//Login Page
@@ -38,7 +45,7 @@ else if ($action == 'signin') {
     $results = Account_db::auth ($email, $password);
     if ($valid && $results ){
 
-        header("Location:.?action=QPage&&email=$email");
+        header("Location:.?action=QPage");
     }
     else
         $error= "<br>Wrong username or password, please try again";
@@ -139,16 +146,28 @@ else if ($action == 'deleteQues') {
 }
 
 else if ($action =='QPage'){
-//    if ($_SESSION["logged"] = False){
-//        header("Location:logout.php");
+    session_start();
+//    if ($_SESSION["logged"] === true){
+//        echo 'ghghgfhgf';
+//        //header("Location:logout.php");
 //    }
 
-    $email = $_GET['email'];
+
+//
+//    if (!(isset($_SESSION['login']) && !$_SESSION['login'] )) {
+//    echo 'gfhgfhgfhgfh';
+//        //header ("Location: login.php");
+//
+//    }
+
+    //$email = $_GET['email'];
+    $email=$_SESSION["email"] ;
+    echo $email;
     $results = questionDataByEmail($email);
     $getNames = Account_db::getNameByEmail($email);
     include('QPage.php');
 }
-Else if ($action =='logout'){
+else if ($action =='logout'){
     include ('logout.php');
 
 }
