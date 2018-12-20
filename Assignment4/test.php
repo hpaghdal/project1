@@ -6,17 +6,6 @@
 
     <?php
 
-//    require('model/database.php');
-//    require('model/account_db.php');
-//    require ('model/Question.php');
-//    require('model/question_db.php');
-//    require('model/questiondb.php');
-//    require ('model/Account.php');
-
-    //$email='tt@g' ;
-
-//    $results = questionDataByEmail($email);
-//    $getNames = Account_db::getNameByEmail($email);
 
     $allQuestions=getAllQuestions();
 echo "Today is " .date("l, F  d, Y ");
@@ -30,27 +19,7 @@ echo "<h1> Welcome: $fname $lname </h1>";
 
 
 
-//if(count($results) < 1)
-//    {
-//        echo "<h3> No questions yet click the 'Add Question' button to add your question</h3>";
-//
-//    }
-//
-//    else {
-//        foreach ($results as $result) {
-//            $id = $result['id'];
-//            $title = $result['title'] ;
-//            $body = $result['body'];
-//            $skill = $result['skills'];
-//
-//            echo "<br>Title: $title";
-//            echo "<br>Body: $body";
-//            echo "<br>Skills: $skill <br>";
-//
-//            echo "<button><a href = '.?action=editQues&&id=$id'>edit<a></td></button><br>";
-//            echo "<button><a href = '.?action=deleteQues&&email=$email&&id=$id'>delete<a></td><br><br></button>";
-//        }
-//    }
+
 ?>
 
     <!DOCTYPE html>

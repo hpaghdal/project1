@@ -5,10 +5,7 @@
 
 <?php
 echo "Today is " .date("l, F  d, Y ");
-//foreach ($getNames as $result) {
-//    $fname = $result['fname'];
-//    $lname = $result['lname'];
-//}
+
 
 echo "<h1> Welcome: $fname $lname </h1>";
 
