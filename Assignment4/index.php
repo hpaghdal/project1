@@ -108,7 +108,7 @@ else if ($action == 'addNewQuestion') {
         Question_db::question($question);
 
         //addNewQuestion($owneremail,$ownerid,$datetime,$questionTitle,$questionbody,$skills);
-       // header("Location:?action=QPage");
+        header("Location:?action=QPage");
 
     }
     else{
