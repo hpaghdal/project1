@@ -196,10 +196,11 @@ else if ($action =='QPage'){
 
     //$email = $_GET['email'];
     $email=$_SESSION["email"] ;
-    echo $email;
+   // echo $email;
     $results = questionDataByEmail($email);
     $getNames = Account_db::getNameByEmail($email);
-    include('test.php');
+    echo $getNames->getFname();
+    //include('test.php');
 }
 else if ($action =='logout'){
     include ('logout.php');
